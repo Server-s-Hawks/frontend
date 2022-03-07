@@ -1,0 +1,8 @@
+.nav-bar{
+    background-color: blueviolet;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: smaller;
+}
