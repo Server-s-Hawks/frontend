@@ -1,13 +1,30 @@
 //import logo from './logo.svg';
 import React, { Component } from 'react';
 import { Home } from './components/home';
+import {Navbar} from './components/navbar';
+import { Chatbot } from './components/chatbot';
+
 import './App.css';
+//import {BrowserRouter as Route, Router, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect} from  'react-router-dom';
 
 function App() {
   return (
-    <div>
-       <div><Home/></div>
+    <Router>
+         <div>
+       <div className='navbar'><Navbar/></div>
+       <div>
+         <Switch>
+             
+             <Route path='/home'><Home/></Route>
+             <Route path='/bot' ><Chatbot/></Route>
+             
+             </Switch>
+         
+       </div>
     </div>
+    </Router>
+ 
     /*<div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

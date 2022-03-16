@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import './navbar.css';
 
+
 export const Navbar=()=>{
     return (
         <nav className='nav-bar'>
-            <h1>App</h1>
-            <ul>
-                <li>Contact</li>
-                <li>News</li>
-            </ul>
+           <div className='logo'><h1>APP</h1></div>
+           <div><button className='btns'>Contact</button></div>
+           <div><button className='btns'>News</button></div>
             
         </nav>
     );
