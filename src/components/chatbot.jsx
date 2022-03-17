@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
+import Chatbot  from 'react-chatbot-kit';
+import config from '../chatbot/config';
+import ActionProvider from '../chatbot/ActionProvider';
+import './chatbot.css';
+import MessageParser from '../chatbot/MessageParser';
 
-export const Chatbot =()=>{
+
+export const Chat_bot =()=>{
     return (
-        <h1>works!</h1>
+        <div className='chatbot'>
+            <Chatbot
+            config={config}
+            actionProvider={ActionProvider}
+            messageParser={MessageParser}
+            
+            />
+        </div>
     );
 }

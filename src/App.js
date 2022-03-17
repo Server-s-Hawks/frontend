@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Home } from './components/home';
 import {Navbar} from './components/navbar';
-import { Chatbot } from './components/chatbot';
+import { Chat_bot } from './components/chatbot';
 
 import './App.css';
 //import {BrowserRouter as Route, Router, Routes} from 'react-router-dom';
@@ -13,11 +13,11 @@ function App() {
     <Router>
          <div>
        <div className='navbar'><Navbar/></div>
-       <div>
+       <div className='App'>
          <Switch>
              
              <Route path='/home'><Home/></Route>
-             <Route path='/bot' ><Chatbot/></Route>
+             <Route path='/bot' ><Chat_bot/></Route>
              
              </Switch>
          
