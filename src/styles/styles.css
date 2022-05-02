@@ -1,0 +1,10 @@
+/* material table bottom bar formatting */
+.MuiTablePagination-displayedRows{
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+.MuiTablePagination-selectLabel{
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
