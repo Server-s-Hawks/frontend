@@ -1,0 +1,15 @@
+.pages{
+    margin-top: 60px;
+    margin-left:250px ;
+}
+
+.toast{
+    color: red;
+}
+
+@media (max-width:768px){
+    .pages{
+        margin-left: 0px;
+    }
+    
+  }
