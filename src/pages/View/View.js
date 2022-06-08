@@ -8,10 +8,10 @@ import React, {useState, useEffect} from 'react';
 const View = () => {
     const [user, setUser]= useState([]);
     
-    const {project_ID} = useParams;
+    const {project_ID} = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/get/6`)
+        axios.get(`http://localhost:5000/api/get/${project_ID}`)
         .then((resp) => setUser({ ...resp.data[0]}));
         
     }, [project_ID]);

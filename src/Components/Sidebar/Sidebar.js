@@ -28,6 +28,18 @@ export default function Sidebar() {
                 Create Project
               </li>
             </Link>
+            <Link to="/searchProject" className="link">
+              <li className="sidebarListItem">
+                <div className="sidebarIcon" />
+                Search Project
+              </li>
+            </Link>
+            <Link to="/request" className="link">
+              <li className="sidebarListItem">
+                <div className="sidebarIcon" />
+                Leave Request
+              </li>
+            </Link>
           </ul>
         </div>
       </div>

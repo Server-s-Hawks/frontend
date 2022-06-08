@@ -9,6 +9,7 @@ import Home from './pages/Home/Home';
 import Projects from "./pages/Projects/Projects";
 import AddProject from './pages/AddProject/AddProject';
 import View from './pages/View/View';
+import UpdateProject from './pages/UpdateProject/UpdateProject';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
               <Route exact path ='/' element={<Home/>} />
               <Route path ='/project' element={<Projects/>} />
               <Route path='/addProject' element={<AddProject/>} />
-              <Route path='/view/:id' element={<View/>} />
+              <Route path='/view/:project_ID' element={<View/>} />
+              <Route path='/update/:project_ID' element={<UpdateProject/>} />
                
           </Routes>
        

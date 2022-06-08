@@ -1,40 +1,63 @@
-import React, {useState} from 'react';
-import { Link} from "react-router-dom";
-import "./AddProject.css";
+import React, {useState,useEffect} from 'react';
+import {useParams, Link} from "react-router-dom";
+import "./UpdateProject.css";
 import axios from "axios";
 import { toast } from 'react-toastify';
 
-// const initialState = {
-//   project_company: "",
-//   project_name: "",
-//   start_date: "",
-//   due_date: "",
-//   description: "",
-//   supervisor_ID: 0,
-//   manager_ID: 0,
-// };
-const AddProject = () => {
-  const [state, setState]=useState([]);
+const initialState = {
+  project_company: "",
+  project_name: "",
+  start_date: "",
+  due_date: "",
+  description: "",
+  supervisor_ID: 0,
+  manager_ID: 0,
+};
+const UpdateProject = () => {
+  const [state, setState]=useState(initialState);
 
   const { project_company, project_name, start_date, due_date, description, supervisor_ID, manager_ID }= state;
 
 //   const history = useNavigate();
 
-  // const {project_ID} = useParams();
+  const {project_ID} = useParams();
 
-  // useEffect(() => {
-  //     axios.get(`http://localhost:5000/api/get/${project_ID}`)
-  //     .then((resp) => setState({ ...resp.data[0] }));
-  // }, [project_ID]);
+  useEffect(() => {
+      axios.get(`http://localhost:5000/api/get/${project_ID}`)
+      .then((resp) => setState({ ...resp.data[0] }));
+  }, [project_ID]);
 
   const handleSubmit= (e) => {
       e.preventDefault();
-      if (!project_company||!project_name||!start_date||!due_date||!description||!supervisor_ID||!manager_ID){
-          toast.error("Please provide value into each input feild");
-      }
-      else {
-      // if (!project_ID) {
-          axios.post(`http://localhost:5000/api/post`, {
+    //   if (!project_company||!project_name||!start_date||!due_date||!description||!supervisor_ID||!manager_ID){
+    //       toast.error("Please provide value into each input feild");
+
+    //   }
+      
+    //   else {
+    //   if (!project_ID) {
+    //       axios.post(`http://localhost:5000/api/post`, {
+    //         project_company,
+    //         project_name,
+    //         start_date,
+    //         due_date,
+    //         description,
+    //         supervisor_ID,
+    //         manager_ID,
+    //       })
+    //       .then(()=> {
+    //           setState({ project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""
+    //          });
+
+    //       })
+    //       .catch((err) => toast.error(err.response.data));
+    //       toast.success("Project Added Successfull");
+
+    //   } 
+      
+
+          axios
+          .put(`http://localhost:5000/api/update/${project_ID}`, {
             project_company,
             project_name,
             start_date,
@@ -44,39 +67,17 @@ const AddProject = () => {
             manager_ID,
           })
           .then(()=> {
-              setState({ project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""
-             });
+              setState({project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""});
 
-          })
-          .catch((err) => toast.error(err.response.data));
-          toast.success("Project Added Successfull");
-
-      
-  //     else {
-
-  //         axios
-  //         .put(`http://localhost:5000/api/update/${project_ID}`, {
-  //           project_company,
-  //           project_name,
-  //           start_date,
-  //           due_date,
-  //           description,
-  //           supervisor_ID,
-  //           manager_ID,
-  //         })
-  //         .then(()=> {
-  //             setState({project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""});
-
-  //         })
+          });
            
-  //         toast.success("Project Updated Successfull");
-  //     }
+          toast.success("Project Updated Successfull");
+      
 
           
-  //       //   setTimeout(() => history.push("/"), 500);
-      }
+        //   setTimeout(() => history.push("/"), 500);
+      
   };
-
 
   const handleInputChange =(e) => {
       const {name, value}=e.target;
@@ -102,7 +103,7 @@ return (
           id="project_company"
           name="project_company"
           placeholder="project company...."
-          value={project_company || ""}
+          value={project_company}
           onChange={handleInputChange}
           />
       <label htmlFor="project_name">Project name</label>
@@ -111,7 +112,7 @@ return (
           id="project_name"
           name="project_name"
           placeholder="project name...."
-          value={project_name || ""}
+          value={project_name}
           onChange={handleInputChange}
           />
       <label htmlFor="start_date">Start date</label>
@@ -120,7 +121,7 @@ return (
           id="start_date"
           name="start_date"
           placeholder="start date...."
-          value={(start_date  && start_date.slice(0,10)) || ""}
+          value={(start_date  && start_date.slice(0,10))}
           onChange={handleInputChange}
           />
       <label htmlFor="due_date">Due date</label>
@@ -129,7 +130,7 @@ return (
           id="due_date"
           name="due_date"
           placeholder="due date...."
-          value={(due_date> start_date  && due_date.slice(0,10)) || ""}
+          value={(due_date> start_date  && due_date.slice(0,10)) }
           onChange={handleInputChange}
           />
       <label htmlFor="description">Description</label>
@@ -138,7 +139,7 @@ return (
           id="description"
           name="description"
           placeholder="description....."
-          value={description || ""}
+          value={description}
           onChange={handleInputChange}
           />
       <label htmlFor="supervisor_ID">Supervisor ID</label>
@@ -148,7 +149,7 @@ return (
           id="supervisor_ID"
           name="supervisor_ID"
           placeholder=" "
-          value={supervisor_ID || ""}
+          value={supervisor_ID}
           onChange={handleInputChange}
           />
         <label htmlFor="manager_ID">Manager ID</label>
@@ -158,7 +159,7 @@ return (
           id="manager_ID"
           name="manager_ID"
           placeholder=" "
-          value={manager_ID || ""}
+          value={manager_ID}
           onChange={handleInputChange}
           />
           {/* <label htmlFor="manager_ID">Client</label>
@@ -171,8 +172,8 @@ return (
           onChange={handleInputChange}
           /> */}
 
-          <input type="submit" value={"Save"}/>
-          <Link to="/">
+          <input type="submit" value={"Update"}/>
+          <Link to="/project">
               <input type="button" value="Go Back" />
           </Link>
       </form>
@@ -182,4 +183,4 @@ return (
 );
 };
 
-export default AddProject;
+export default UpdateProject;

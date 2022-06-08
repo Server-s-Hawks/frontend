@@ -1,18 +1,4 @@
-/*  
-.card-header {
-    height: 30%;
-    background: #5d6770;
-    color: white;
-     
-}
-.card-header P {
-    font-size: 20px;
-} */
- 
-/* .view_container {
-    flex-direction: column;
-    margin-left: 130px;
-} */
+
 .card {
     
     flex-direction: column;
