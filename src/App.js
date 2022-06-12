@@ -1,48 +1,129 @@
-//import logo from './logo.svg';
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Home } from './components/home';
 import {Navbar} from './components/navbar';
-import { Chat_bot } from './components/chatbot';
+//import { Chat_bot } from './components/chatbot';
+import { useHistory } from 'react-router-dom';
+import { Profile } from './components/profile';
 
 import './App.css';
-//import {BrowserRouter as Route, Router, Routes} from 'react-router-dom';
+
 import { BrowserRouter as Router, Switch, Route, Redirect} from  'react-router-dom';
 
 function App() {
-  return (
+
+  //const history = useHistory();
+  
+
+//const dispatch = useDispatch();  // A hook that access react dispatch function
+
+/*useEffect(()=>{
+  dispatch(getGets());
+}, [dispatch]);*/
+let toHome = true;
+return (
+  <Router>
+       <div>
+     <div className='navbar'><Navbar/></div>
+     <div className='App'>
+       
+        <Switch>
+          <Route exact path='/'> <Home/></Route>
+          <Route path='/profile' ><Profile/></Route>
+          
+          </Switch>   
+           
+           
+           
+       
+     </div>
+  </div>
+  </Router>
+
+
+
+);
+
+
+
+//<Route exact path='/home' ><Home/></Route>......<Route exact path='/profile/bot' ><Chat_bot/></Route>
+
+/*
+ return (
     <Router>
          <div>
        <div className='navbar'><Navbar/></div>
        <div className='App'>
-         <Switch>
+         
+          <Switch>
+            <Route exact path='/home' ><Home/></Route>
+             <Route path='/profile/bot' ><Chat_bot/></Route>
+            
+            </Switch>   
              
-             <Route path='/home'><Home/></Route>
-             <Route path='/bot' ><Chat_bot/></Route>
              
-             </Switch>
+             
          
        </div>
     </div>
     </Router>
  
-    /*<div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>*/
+
 
   );
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*return (
+    <Router>
+         <div>
+       <div className='navbar'><Navbar/></div>
+       <div className='App'>
+         
+          <Switch>
+          <Route exact path='/home' ><Home/></Route>
+             <Route path='/profile/bot' ><Chat_bot/></Route>
+            
+            </Switch>   
+             
+             
+             
+         
+       </div>
+    </div>
+    </Router>
+ 
+
+
+  );*/
 }
 
 export default App;

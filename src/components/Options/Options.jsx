@@ -9,8 +9,14 @@ const Options = (props) => {
       handler: props.actionProvider.handleLoanProcess,
       id: 1,
     },
-    { text: "Attendance", handler: () => {}, id: 2 },
-    { text: "Leave", handler: () => {}, id: 3 },
+    { text: "Attendance",
+     handler: props.actionProvider.handleAttendance,
+      id: 2
+     },
+    { text: "Leave",
+     handler: props.actionProvider.handleLeave,
+      id: 3
+    },
   ];
 
   const buttonsMarkup = options.map((option) => (

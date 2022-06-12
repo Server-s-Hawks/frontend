@@ -1,6 +1,11 @@
 import React, { Component, useState } from 'react';
-
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+//import { BrowserRouter as Router, Switch, Route, Redirect} from  'react-router-dom';
+import { useHistory } from 'react-router-dom'; // it holds the previous page , if "push" is called it changes location then
 import './login.css';
+
+
 
 export const Login =()=> {
 
@@ -11,9 +16,15 @@ export const Login =()=> {
     const [username, setUsername]= useState("");
     const [password,setPassword]= useState("");
 
+   
+
+    const history = useHistory();
+
+
+
     
-
-
+   
+    
 
 
 
@@ -59,29 +70,29 @@ export const Login =()=> {
 //---------------------------------------------------------------------------------------------
 
 async function login(){ //
-  console.log(username,password);
+  
+  
+    
+  
 
-  /*let item={username,password};
-  let result_= await fetch("http://localhost:3000/login",{ 
-    method:'GET',
-    headers:{
-      "Content-Type":"application/json",  
-      "Accept":"application/json"         
-    },
-    body: JSON.stringify(item)
-  }); 
-  
-  result_ = await result_.json();  */
-  
-  
-  
-  const response_= await fetch("http://localhost:3000/login");
+    let request = {
+      username: username,
+      password: password
+    }
 
-  const data_ = await response_.json();
-
-  //if(username==data_.Username && password==data_.Password) console.log("login successfull");
-console.log(data_.Username);
+axios.post('http://localhost:3000/login', request)
+.then(response=>{
+  //alert(response.data.message);
+  if(response.data.status==true){
+    history.push('/profile');
+    
   
+}})
+.catch(error=>{
+  console.log(error);
+})
+
+ 
   
 }
 
@@ -92,15 +103,15 @@ console.log(data_.Username);
         <h2 className='sign-in'>sign in</h2>
         <form  >
             
-            <div>
-          <input type="text" name='username' onChange={(e)=>setUsername(e.target.value)}  className='login-1' placeholder='User name' ></input>
+          <div>
+             <input type="text" name='username' onChange={(e)=>setUsername(e.target.value)}  className='login-1' placeholder='User name' ></input>
           </div>
           <div >
-          <input type="password" name='password' onChange={(e)=>setPassword(e.target.value)} className='login-1' placeholder='Password'></input>
+            <input type="password" name='password' onChange={(e)=>setPassword(e.target.value)} className='login-1' placeholder='Password'></input>
           </div>
-          <div className='login-2'>
           
-          <button onClick={login} className='btn'>Sign in</button>
+          <div className='login-2'> 
+            <button onClick={login} className='btn'>Sign in</button>
           </div>
             
         </form>
