@@ -18,12 +18,15 @@ function App() {
 
 /*useEffect(()=>{
   dispatch(getGets());
-}, [dispatch]);*/
+}, [dispatch]);
+
+<div className='navbar'><Navbar/></div>
+*/
 let toHome = true;
 return (
   <Router>
        <div>
-     <div className='navbar'><Navbar/></div>
+     
      <div className='App'>
        
         <Switch>

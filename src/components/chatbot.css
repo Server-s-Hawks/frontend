@@ -1,6 +1,8 @@
 .chatbot{
-    background-color: rgb(177, 196, 231);
+    background-color: rgb(48, 62, 88);
+    color: white;
     padding: 20px 20px 20px 20px;
     border-radius: 20px;
     width: fit-content;
+    z-index: 95;
 }
