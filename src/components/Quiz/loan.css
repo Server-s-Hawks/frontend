@@ -1,0 +1,43 @@
+.loan-popup-main{
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    background-color: black;
+    opacity: 0.6;
+}
+
+.loan-popup{
+
+ position: absolute;
+ background-color: rgb(228, 155, 228);
+ top: 200px;
+ left: 200px;
+ display: flex;
+ flex-direction: column;
+ border-radius: 20px;
+ z-index: 100;
+ opacity: 1;
+ 
+ 
+
+}
+
+.head{
+    display: flex;
+    flex-direction: row;
+}
+.head-section1{
+    margin: 10px 50px 10px 10px;
+}
+.head-section2{
+    margin: 10px 10px 10px 50px;
+}
+.contents{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    
+}

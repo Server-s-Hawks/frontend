@@ -1,4 +1,24 @@
-.App {
+
+.App{
+  font-family: sans-serif;
+  
+}
+.navbar{
+  
+  margin-bottom: 100px;
+  position: sticky;
+  
+ 
+  
+}
+
+
+
+
+
+
+
+/*.App {
   text-align: center;
 }
 
@@ -35,4 +55,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+}*/

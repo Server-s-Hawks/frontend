@@ -1,0 +1,75 @@
+.topbar{
+  width: 100%;
+  height: 60px;
+  /* background-color: rgb(255, 255, 255); */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #060b26;
+  margin: 0;
+  opacity: 1;
+}
+.topbarWrapper{
+  height: 100%;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo{
+  color: rgb(246, 246, 246);
+  font-weight: bold;
+  font-size: 30px;
+
+}
+.topbarRight{
+  display: flex;
+  align-items: center;
+ 
+}
+
+.topbarIcon{
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+  color: white;
+}
+.icontop{
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  top: -5px;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.iconbutton{
+  display: none;
+}
+.iconbutton:hover{
+  background-color: blue;
+}
+.textColor{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
+@media (max-width:768px){
+  .logo{
+    display: none;
+  }
+  .iconbutton{
+    display:block;
+  }
+  
+}

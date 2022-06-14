@@ -1,0 +1,35 @@
+.vertical{
+    display:flex;
+    flex-direction: column;
+
+}
+.horizontal{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.top-bar{
+    position: fixed;
+    background-color: rgb(39, 38, 38);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: smaller;
+    z-index: 100;
+    margin: 0% 0% 0% 0%;
+    padding:0% 0% 0% 0%;
+    
+}
+.h1{
+   float: left;
+}
+
+.h2{
+   position: relative;
+   left: 250px;
+   margin-top: 10px;
+   top: 60px;
+}
