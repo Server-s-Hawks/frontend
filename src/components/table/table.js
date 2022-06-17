@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 80 },
-  { id: 'address', label: 'Address', minWidth: 80 },
+  { id: 'address_city', label: 'Address', minWidth: 80 },
   { id: 'mobile', label: 'Mobile Number', minWidth: 50 },
   { id: 'email', label: 'Email Address', minWidth: 80 },
   { id: 'nic', label: 'NIC number', minWidth: 50 },
@@ -24,16 +24,16 @@ function createData(name, address, mobile, email, nic, dob) {
   return { name, address, mobile, email, nic, dob};
 }
 
-const rows = [
-  createData('Saman Perera', 'Colombo', '0774455898', 'saman@abc.com', '914578632V', '1991-02-17'),
-  createData('Nimal Perera', 'Kandy', '077784598', 'nimal@abc.com', '945896352V', '1994-10-27'),
-];
+// const rows = [
+//   createData('Saman Perera', 'Colombo', '0774455898', 'saman@abc.com', '914578632V', '1991-02-17'),
+//   createData('Nimal Perera', 'Kandy', '077784598', 'nimal@abc.com', '945896352V', '1994-10-27'),
+// ];
 
 const navigateToUpdateUser = (e) => {
   window.location = '/admin/update'
 }
 
-export default function StickyHeadTable() {
+export default function StickyHeadTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -46,7 +46,7 @@ export default function StickyHeadTable() {
     setPage(0);
   };
 
-
+  const rows = props.data
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>

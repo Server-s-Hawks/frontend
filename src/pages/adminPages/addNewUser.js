@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import "../../styles/styles.css";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { validateEmail, required, passwordMatch } from "../../validations/validation";
 import Sidebar from "../../components/sidebar/sidebar";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 export default function AddNewUser() {
     //initiate initial states
@@ -23,6 +21,7 @@ export default function AddNewUser() {
 
     const [isValid, setIsValid] = useState(false);
     const [dirty, setDirty] = useState([false, false, false, false, false, false, false, false]);
+    const location = useLocation();
 
     const handleEmailChange = (event) => {
         const val = event.target.value;
@@ -37,8 +36,9 @@ export default function AddNewUser() {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         let user = {
+            user_ID: location.state.user_ID,
             name: name,
-            address: address,
+            address_city: address,
             dob: dob,
             nic: nic,
             email: email,
@@ -68,7 +68,7 @@ export default function AddNewUser() {
                     alert(error.message);
                 });
         }
-        // window.location = '/admin/'
+        window.location = '/admin/'
     };
 
     return (
@@ -199,20 +199,6 @@ export default function AddNewUser() {
                                         helperText={dirty[4] && !required(dob) ? "This field is required." : ""}
                                         onChange={(e) => setDOB(e.target.value)}
                                     />
-                                    {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                        <DatePicker
-                                            variant="outlined"
-                                            onFocus={() => dirty[4] = true}
-                                            error={dirty[4] && !required(dob)}
-                                            helperText={dirty[4] && !required(dob) ? "This field is required." : ""}
-                                            label="Enter date of birth"
-                                            value={dob}
-                                            onChange={(newValue) => {
-                                                setDOB(newValue);
-                                            }}
-                                            renderInput={(params) => <TextField {...params} />}
-                                        />
-                                    </LocalizationProvider> */}
                                 </Box>
                             </div>
                             <div className="col-6">
