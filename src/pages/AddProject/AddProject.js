@@ -1,31 +1,13 @@
 import React, {useState} from 'react';
-import { Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import "./AddProject.css";
 import axios from "axios";
 import { toast } from 'react-toastify';
 
-// const initialState = {
-//   project_company: "",
-//   project_name: "",
-//   start_date: "",
-//   due_date: "",
-//   description: "",
-//   supervisor_ID: 0,
-//   manager_ID: 0,
-// };
 const AddProject = () => {
   const [state, setState]=useState([]);
 
   const { project_company, project_name, start_date, due_date, description, supervisor_ID, manager_ID }= state;
-
-//   const history = useNavigate();
-
-  // const {project_ID} = useParams();
-
-  // useEffect(() => {
-  //     axios.get(`http://localhost:5000/api/get/${project_ID}`)
-  //     .then((resp) => setState({ ...resp.data[0] }));
-  // }, [project_ID]);
 
   const handleSubmit= (e) => {
       e.preventDefault();
@@ -33,7 +15,7 @@ const AddProject = () => {
           toast.error("Please provide value into each input feild");
       }
       else {
-      // if (!project_ID) {
+      
           axios.post(`http://localhost:5000/api/post`, {
             project_company,
             project_name,
@@ -50,30 +32,6 @@ const AddProject = () => {
           })
           .catch((err) => toast.error(err.response.data));
           toast.success("Project Added Successfull");
-
-      
-  //     else {
-
-  //         axios
-  //         .put(`http://localhost:5000/api/update/${project_ID}`, {
-  //           project_company,
-  //           project_name,
-  //           start_date,
-  //           due_date,
-  //           description,
-  //           supervisor_ID,
-  //           manager_ID,
-  //         })
-  //         .then(()=> {
-  //             setState({project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""});
-
-  //         })
-           
-  //         toast.success("Project Updated Successfull");
-  //     }
-
-          
-  //       //   setTimeout(() => history.push("/"), 500);
       }
   };
 
@@ -161,15 +119,6 @@ return (
           value={manager_ID || ""}
           onChange={handleInputChange}
           />
-          {/* <label htmlFor="manager_ID">Client</label>
-        <input
-          type="text"
-          id="client"
-          name="client"
-          placeholder="client name...."
-          value={client || ""}
-          onChange={handleInputChange}
-          /> */}
 
           <input type="submit" value={"Save"}/>
           <Link to="/">

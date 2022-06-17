@@ -10,6 +10,8 @@ import Projects from "./pages/Projects/Projects";
 import AddProject from './pages/AddProject/AddProject';
 import View from './pages/View/View';
 import UpdateProject from './pages/UpdateProject/UpdateProject';
+import SearchProject from './pages/SearchProject/SearchProject';
+import LeaveRequest from './pages/LeaveRequest/LeaveRequest';
 
 function App() {
   return (
@@ -24,9 +26,12 @@ function App() {
               
               <Route exact path ='/' element={<Home/>} />
               <Route path ='/project' element={<Projects/>} />
-              <Route path='/addProject' element={<AddProject/>} />
-              <Route path='/view/:project_ID' element={<View/>} />
-              <Route path='/update/:project_ID' element={<UpdateProject/>} />
+              <Route path ='/addProject' element={<AddProject/>} />
+              <Route path ='/view/:project_ID' element={<View/>} />
+              <Route path ='/update/:project_ID' element={<UpdateProject/>} />
+              <Route path ='/searchProject' element={<SearchProject/>} />
+              <Route path ='/request' element={<LeaveRequest/>} />
+
                
           </Routes>
        
