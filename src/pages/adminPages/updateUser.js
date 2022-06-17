@@ -8,13 +8,13 @@ import Sidebar from "../../components/sidebar/sidebar";
 
 export default function UpdateUser() {
     //initiate initial states
-    const [name, setName] = useState("");
-    const [address, setAddress] = useState("");
-    const [email, setEmail] = useState("");
-    const [dob, setDOB] = useState("");
-    const [nic, setNIC] = useState("");
-    const [mobileNumber, setMobileNumber] = useState("");
-    const [password, setPassword] = useState("");
+    const [name, setName] = useState("Saman Perera");
+    const [address, setAddress] = useState("Colombo");
+    const [email, setEmail] = useState("saman@abc.com");
+    const [dob, setDOB] = useState("1991-02-17");
+    const [nic, setNIC] = useState("912563214V");
+    const [mobileNumber, setMobileNumber] = useState("0771452345");
+    const [password, setPassword] = useState("saman");
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const [isValid, setIsValid] = useState(false);
