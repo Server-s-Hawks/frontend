@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function AdminDashboard() {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
-
+    //go to create form
     const navigateToCreateUser = (e) => {
         navigate("/admin/create", {
             state: {
@@ -17,6 +17,7 @@ function AdminDashboard() {
         });
     }
 
+    //get data from database
     useEffect(() => {
         async function fetchData() {
             await axios

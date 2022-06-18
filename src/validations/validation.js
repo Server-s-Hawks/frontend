@@ -25,3 +25,11 @@ export const passwordMatch = (password, confirmPassword) => {
       return true;
   }
 };
+
+export const validateNic = (value) => {
+  if (!/^\d{10}$/.test(value)) {
+    return false;
+  } else {
+    return true;
+  }
+};

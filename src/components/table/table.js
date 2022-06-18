@@ -10,42 +10,64 @@ import TableRow from '@mui/material/TableRow';
 import '../../styles/styles.css';
 
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
+//define columns
 const columns = [
   { id: 'name', label: 'Name', minWidth: 80 },
   { id: 'address_city', label: 'Address', minWidth: 80 },
-  { id: 'mobile', label: 'Mobile Number', minWidth: 50 },
   { id: 'email', label: 'Email Address', minWidth: 80 },
   { id: 'nic', label: 'NIC number', minWidth: 50 },
-  { id: 'dob', label: 'Date of Birth', minWidth: 50 },
+  {
+    id: 'dob', label: 'Date of Birth', minWidth: 50,
+    format: (value) => value.slice(0, 10),
+  },
 ];
-
-function createData(name, address, mobile, email, nic, dob) {
-  return { name, address, mobile, email, nic, dob};
-}
-
-// const rows = [
-//   createData('Saman Perera', 'Colombo', '0774455898', 'saman@abc.com', '914578632V', '1991-02-17'),
-//   createData('Nimal Perera', 'Kandy', '077784598', 'nimal@abc.com', '945896352V', '1994-10-27'),
-// ];
-
-const navigateToUpdateUser = (e) => {
-  window.location = '/admin/update'
-}
 
 export default function StickyHeadTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const navigate = useNavigate();
 
+  //handle page change
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
+  //handle row number change
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
 
+  //go to update form
+  const navigateToUpdateUser = (e, data) => {
+    navigate("/admin/update", {
+      state: {
+        data: data,
+      },
+    });
+  }
+
+  //handle delete
+  const handleDelete = (e, data) => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm("Are you sure you want to delete user?") == true) {
+      console.log("data", data);
+      axios
+        .delete("/user/" + data)
+        .then((response) => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error.message);
+          alert(error.message);
+        });
+    }
+  }
+
+  //get data of user
   const rows = props.data
 
   return (
@@ -75,19 +97,19 @@ export default function StickyHeadTable(props) {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
+                          {column.format && column.id === 'dob'
                             ? column.format(value)
                             : value}
                         </TableCell>
                       );
                     })}
                     <TableCell>
-                        <Button variant="contained" color="warning" onClick={e => navigateToUpdateUser(e)}> Update </Button>
+                      <Button variant="contained" color="warning" onClick={e => navigateToUpdateUser(e, row)}> Update </Button>
                     </TableCell>
                     <TableCell>
-                        <Button variant="contained" color="error"> Delete </Button>
+                      <Button variant="contained" color="error" onClick={e => handleDelete(e, row["user_ID"])}> Delete </Button>
                     </TableCell>
-                    
+
                   </TableRow>
                 );
               })}

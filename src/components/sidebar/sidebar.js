@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Sidebar() {
     return (
-        <div className="d-flex flex-column pt-4 bg-primary text-light min-vh-100" style={{ width: "270px" }}>
+        <div className="d-flex flex-column pt-4 bg-dark text-light min-vh-100" style={{ width: "270px" }}>
             {/* <img src="" alt="" width="32" height="32" className="rounded-circle me-2"> */}
             <span className="fs-4 ps-3">Name</span>
             <span className="fs-6 ps-3">Admin</span>
