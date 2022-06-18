@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import TopBar from "./components/Topbar/Topbar";
+import "./App.css";
+import Add from './pages/Add/Add';
+import {
+ BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+import  TableData from './pages/View/View'
+
+
+
 
 function App() {
+ 
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload rush.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    
+    <Router>
+    <TopBar/>
+      <div className='pages'>
+    
+   
+    <Routes>
+    
+     
+      <Route path='/Add' element={<Add/>} />  
+      <Route path='/view' element={< TableData/>} /> 
+      
+    </Routes>
+    
+    
     </div>
+    </Router>
+    
+    </>
   );
 }
 
 export default App;
+
