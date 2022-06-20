@@ -15,6 +15,11 @@ import {
   Link
 } from "react-router-dom";
 import AddTeam from './pages/addTeam/AddTeam';
+import ViewTeam from './pages/viewTeam/ViewTeam';
+import  AddTask  from './pages/AddTask/AddTask';
+import ViewTask from './pages/ViewTask/ViewTask';
+import ProjectTable from './pages/Projects/ProjectTable';
+import NewView from './pages/ViewTask/ViewTask';
 
 
 
@@ -40,11 +45,13 @@ function App() {
       
     <Routes>
       <Route path='/' element={<Home/>} />  
-      <Route path='/projects' element={<ProjectNew/>} />
+      <Route path='/projects' element={<ProjectTable/>} />
       <Route path='/team' element={<Team/>} />
       <Route path='/task' element={<Task/>} />
       <Route path='/create-team' element={<AddTeam/>} />
-    
+      <Route path='/view/:id' element={<ViewTeam/>} />
+      <Route path='/create-task' element={<AddTask/>} />
+      <Route path='/viewTask/:id' element={<ViewTask/>} />
     </Routes>
     </div>
 

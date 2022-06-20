@@ -1,11 +1,10 @@
 .styled-table {
     border-collapse: collapse;
-    margin: auto;
     font-size: 0.9em;
     font-family: sans-serif;
-    max-width: 800px;
+    width: 1000px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    flex: 6;
+   
 }
 
 .styled-table thead tr {
@@ -56,4 +55,5 @@
     background-color: #0e961a;
     color: black;
 }
+
 

@@ -1,173 +1,141 @@
-import React, {useState,useEffect} from 'react';
-import {useNavigate, useParams, Link} from "react-router-dom";
+import axios from 'axios';
+import React,{useState} from 'react';
 import "./addTeam.css";
-import axios from "axios";
-import { toast } from 'react-toastify';
+import SelectMembers from './SelectMembers';
+function AddTeam() {
+    const [team_ID, setTeamID]=useState("");
+    const [name, setName]=useState("");
+    const [description, setDescription]=useState("");
+    const [project_ID, setProjectID]=useState("");
+    const [supervisor_ID, setSupervisorID]=useState("");
+   // const [date,setDate]=useState();
 
-const initialState = {
-  project_company: "",
-  project_name: "",
-  start_date: "",
-  due_date: "",
-  description: "",
-  supervisor_ID: 0,
-  manager_ID: 0,
-};
-const AddTeam = () => {
-  const [state, setState]=useState(initialState);
+    //const {team_ID, name,description, project_ID,supervisor_ID}=state;
+    const handleSubmit=(e) =>{
+        console.log(team_ID,name,description,project_ID,supervisor_ID);
+        e.preventDefault();
+            axios.post(`http://localhost:4004/team/post`, {
+                team_ID,
+                name,
+                description,
+                project_ID,
+                supervisor_ID,
+                //date
+            }).then((res)=>{
+                window.alert("Team Insert Successfully");
+                console.log(res);
+                
+            });
+                setTeamID("");
+                setName("");
+                setDescription("");
+                setProjectID("");
+                setSupervisorID("");
+                
+        
+    }
 
-  const { project_company, project_name, start_date, due_date, description, supervisor_ID, manager_ID }= state;
-
-  const history = useNavigate();
-
-  const {project_ID} = useParams;
-
-  useEffect(() => {
-      axios.get(`http://localhost:5000/api/get/${project_ID}`)
-      .then((resp) => setState({ ...resp.data[0] }));
-  }, [project_ID]);
-
-  const handleSubmit= (e) => {
-      e.preventDefault();
-      if (!project_company||!project_name||!start_date||!due_date||!description||!supervisor_ID||!manager_ID){
-          toast.error("Please provide value into each input feild");
-
-      }else {
-      if (!project_ID) {
-          axios
-          .post(`http://localhost:5000/api/post`, {
-            project_company,
-            project_name,
-            start_date,
-            due_date,
-            description,
-            supervisor_ID,
-            manager_ID,
-          })
-          .then(()=> {
-              setState({ project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: "" });
-
-          })
-          .catch((err) => toast.error(err.response.data));
-          toast.success("Contact Added Successfull");
-
-      } 
-      else {
-
-          axios
-          .put(`http://localhost:5000/api/update/${project_ID}`, {
-            project_company,
-            project_name,
-            start_date,
-            due_date,
-            description,
-            supervisor_ID,
-            manager_ID,
-          })
-          .then(()=> {
-              setState({project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""});
-
-          })
-          .catch((err) => toast.error(err.response.data));
-          toast.success("Contact Updated Successfull");
-      }
-
-          
-          setTimeout(() => history.push("/"), 5000);
-      }
-  };
-
-  const handleInputChange =(e) => {
-      const {name, value}=e.target;
-      setState({...state, [name]:value});
-  };
-
-
-
-return (
-  <div style={{marginTop: "100px"}}>
+  return (
+    <>
+    <div style={{marginLeft:"-40%"}}>
+        <div style={{marginTop: "100px"}}>
       <form style={{
           margin: "auto",
           padding :"15px",
           maxWidth: "400px",
-          alignContent: "center"
+          alignContent: "left"
       }}
-
       onSubmit={handleSubmit}
+      
+
+      
       >
-      <label htmlFor="project_company">Project company</label>
+      <label htmlFor="project_company">Team ID</label>
       <input
           type="text"
-          id="project_company"
-          name="project_company"
-          placeholder="project company...."
-          value={project_company || ""}
-          onChange={handleInputChange}
+          id="Team_ID"
+          name="Team ID"
+          placeholder="Team ID"
+          value={team_ID}
+          onChange={(e)=>setTeamID(e.target.value)
+          }
+         required
           />
       <label htmlFor="project_name">Project name</label>
+     
       <input
           type="text"
-          id="project_name"
-          name="project_name"
-          placeholder="project name...."
-          value={project_name || ""}
-          onChange={handleInputChange}
+          id="name"
+          name="Name"
+          placeholder="Name"
+          value={name}
+          onChange={(e)=>setName(e.target.value)}
+          required
           />
-      <label htmlFor="start_date">Start date</label>
-      <input
-          type="date"
-          id="start_date"
-          name="start_date"
-          placeholder="start date...."
-          value={start_date || ""}
-          onChange={handleInputChange}
-          />
-      <label htmlFor="due_date">Due date</label>
-      <input
-          type="date"
-          id="due_date"
-          name="due_date"
-          placeholder="due date...."
-          value={due_date || ""}
-          onChange={handleInputChange}
-          />
+     
       <label htmlFor="description">Description</label>
       <input
           type="text"
           id="description"
           name="description"
           placeholder="description....."
-          value={description || ""}
-          onChange={handleInputChange}
+          value={description}
+          onChange={(e)=>setDescription(e.target.value)}
+          required
+          />
+
+<label htmlFor="project_ID">Project ID</label>
+      <input
+          type="text"
+          id="project_ID"
+          name="project_ID"
+          placeholder="insert supp "
+          value={project_ID}
+          onChange={(e)=>setProjectID(e.target.value)}
+          required
           />
       <label htmlFor="supervisor_ID">Supervisor ID</label>
       <input
-          type="number"
-          min="1"
+          type="text"
+        
           id="supervisor_ID"
           name="supervisor_ID"
           placeholder=" "
-          value={supervisor_ID || ""}
-          onChange={handleInputChange}
+          value={supervisor_ID}
+          onChange={(e)=>setSupervisorID(e.target.value)}
+          required
           />
-        <label htmlFor="manager_ID">Manager ID</label>
-        <input
-          type="number"
-          min="1"
-          id="manager_ID"
-          name="manager_ID"
+
+
+{/* <label htmlFor="supervisor_ID">Date</label>
+      <input
+          type="date"
+        
+          id="date"
+          name="Date"
           placeholder=" "
-          value={manager_ID || ""}
-          onChange={handleInputChange}
-          />
-          <input type="submit" value={project_ID ? "Update" : "Save"}/>
-          <Link to="/">
+          value={date}
+          onChange={(e)=>setDate(e.target.value)}
+          required
+          /> */}
+       
+         
+        
+          <input type="submit" />
+          {/* <Link to="/">
               <input type="button" value="Go Back" />
-          </Link>
+          </Link> */}
       </form>
       
       
   </div>
-);
-};
-export default AddTeam;
+  
+    </div>
+    <div style={{marginLeft:"650px",marginTop:"-40%"}}>
+  <SelectMembers/>
+  </div>
+    </>
+  )
+}
+
+export default AddTeam
