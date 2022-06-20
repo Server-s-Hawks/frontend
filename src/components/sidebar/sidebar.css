@@ -1,11 +1,4 @@
-.botsection{
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    background-color: rgb(20, 89, 108);
-    margin-top: 50px;
-    
-}
+
 .botsection:hover{
   background-color: rgb(30, 135, 164);
 }
@@ -52,9 +45,9 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 8px 0px 8px 16px;
+    padding: 2px 0px 2px 16px;
     list-style: none;
-    height: 60px;
+    height: 40px;
   }
   
   .nav-text a {
@@ -67,6 +60,7 @@
     align-items: center;
     padding: 0 16px;
     border-radius: 4px;
+    
   }
   
   .nav-text a:hover {

@@ -37,7 +37,7 @@ class ActionProvider {
     };
   //------------------------------------------------------------------------------
 
-  handleAttendance = (lowercasedMessage) => {
+  handleAttendance1 = (lowercasedMessage) => {
     
     var current_time = new Date();   //Our current time
     var standard_time = new Date();  //it's a predefined time
@@ -45,18 +45,19 @@ class ActionProvider {
     standard_time.setHours(8,0,0);
 
 
-    var attendance_marked= false;
+    
+
 
     
 
-    if(current_time<standard_time){  
+    if(current_time>standard_time){  
       const message = this.createChatBotMessage("Attendace cannot be Marked!");
 
       this.addMessageToState(message); //display the message
     }
 
 
-    else if(attendance_marked){
+    else if(lowercasedMessage==false){
        const message = this.createChatBotMessage("Attendace is already Marked!");
 
        this.addMessageToState(message); //display the message
@@ -66,7 +67,9 @@ class ActionProvider {
     else{
       const message = this.createChatBotMessage("Give me your user ID");
       this.addMessageToState(message)
-      if(lowercasedMessage!=null){
+
+   
+      /*if(lowercasedMessage!=null){
         axios.post('/profile/attendance',{lowercasedMessage:lowercasedMessage}).
         then(response=>{
           if(response.data.status==true){
@@ -82,20 +85,22 @@ class ActionProvider {
         .catch(error=>{
           console.log(error);
         });
-      }
+      }*/
      
        }
 
 
 
     //setTimeout(function(){render(<Loan />);}, 3000);
-    
+    };
+  //------------------------------------------------------------------
+
+  handleAttendance2=()=>{
+    const message = this.createChatBotMessage("marked");
+    this.addMessageToState(message);
+  }
 
 
-    
-    
-
-  };
   //----------------------------------------------------------------------
   handleLeave = () =>{
     

@@ -10,7 +10,7 @@ const Options = (props) => {
       id: 1,
     },
     { text: "Attendance",
-     handler: props.actionProvider.handleAttendance,
+     handler: ()=>{props.actionProvider.handleAttendance1();/*props.actionProvider.handleAttendance2();*/ },
       id: 2
      },
     { text: "Leave",

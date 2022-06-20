@@ -1,8 +1,16 @@
-.login-1{
+.login-11{
     margin-bottom: 20px;
     
     border-color: blueviolet;
-    border-radius: 10px;
+    border-radius: 0px;
+    padding: 5px 15px 3px 15px;
+    
+}
+.login-12{
+    margin-bottom: 20px;
+    
+    border-color: blueviolet;
+    border-radius: 0px;
     padding: 5px 15px 3px 15px;
     
 }
@@ -28,6 +36,7 @@
     background-color:rgb(220, 183, 255);
     border-radius: 15px;
     margin-left: 40%;
+    margin-top: 100px;
 }
 .sign-in{
     margin-bottom: 50px;

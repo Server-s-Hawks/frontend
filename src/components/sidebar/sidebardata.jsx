@@ -3,42 +3,41 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 
+// for project handling------------------------------------
+
 const SidebarData = [
+
   {
-    title: 'Home',
-    path: '/',
+    title: 'Profile',
+    path: '/profile',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text'
   },
   {
     title: 'Project',
-    path: '/projects',
+    path: '/profile/projects',   //------P
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
   },
+  
   {
-    title: 'Team',
-    path: '/team',
-    icon: <FaIcons.FaCartPlus />,
+    title: 'Add Project',
+    path: '/profile/add-project',
+    icon: <IoIcons.IoIosAttach/>, //-------p
     cName: 'nav-text'
   },
   {
-    title: 'Task',
-    path: '/task',
-    icon: <IoIcons.IoMdPeople />,
+    title: 'Update Project',
+    path: '/profile/update-project', //-----p
+    icon: <IoIcons.IoIosAnalytics/>,
     cName: 'nav-text'
   },
   {
-    title: 'Create Team',
-    path: '/create-team',
-    icon: <FaIcons.FaEnvelopeOpenText />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Create Task',
-    path: '/create-task',
-    icon: <IoIcons.IoMdHelpCircle />,
+    title: 'View Project',
+    path: '/profile/view-project',//-------p
+    icon: <IoIcons.IoIosEye/>,
     cName: 'nav-text'
   }
+
 ];
 export default SidebarData;

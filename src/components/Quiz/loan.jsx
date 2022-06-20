@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import flatpickr from 'flatpickr';
 
 import './loan.css';
 
@@ -27,7 +28,7 @@ function loanSubmit(){
                        description: descript
                       }
  
- axios.post('http://localhost:3000/profile/loan',loanRequest)
+ axios.post('http://localhost:5000/profile/loan',loanRequest)
  .then(response=>{
      alert(response.data.message);
  });
@@ -40,29 +41,30 @@ function loanSubmit(){
 
 
 return(popup1)?
-<div >
+<div className='main'>
 <div className="loan-popup-main"></div>    
 <div className="loan-popup">
       <div className='head'>
-            <h2 className='head-section1'>Please provide following information</h2>
-            <button className='head-section2' onClick={handlePopup1}>close</button>
+            <h2 className='head-section1'>Please provide loan information</h2>
+            <button className='head-section2' onClick={handlePopup1}>X</button>
       </div>
 
       <div className='contents'>
-          <input type="text" name="userid" onChange={(e)=>setUserID(e.target.value)} placeholder='User ID' autoFocus required/>
+          <label >User ID</label><input className='lables' type="text" name="userid" onChange={(e)=>setUserID(e.target.value)} placeholder='User ID' autoFocus required />
       </div>
 
       <div className='contents'>
-          <input type="number" min="1" step="any" name="amount" onChange={(e)=>setAmount(e.target.value)} placeholder='Amount' autoFocus required></input>  
+          <label >Amount</label><input className='lables' type="number" min="1" step="any" name="amount" onChange={(e)=>setAmount(e.target.value)} placeholder='Amount' autoFocus required ></input>  
           
       </div>
 
       <div className='contents'>
-         <textarea name="description" onChange={(e)=>setDescript(e.target.value)} placeholder='description' autoFocus required maxLength="20"></textarea>
+         <label >Description</label><textarea name="description" onChange={(e)=>setDescript(e.target.value)} placeholder='description' autoFocus required maxLength="20" className='lables'></textarea>
       </div>
+      
 
       <div className='contents'>
-          <button onClick={loanSubmit}>Submit</button>
+          <button onClick={loanSubmit} className='submit'>Submit</button>
       </div>
 
 </div>

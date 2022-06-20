@@ -28,7 +28,7 @@ const config = {
     {//widget 2
       widgetName: "loan",
       widgetFunc: (props) => <Quiz {...props} />,
-      props: {
+     /* props: {
         questions: [
           {
             question: "What is the amount?",
@@ -43,7 +43,7 @@ const config = {
             id: 2,
           },
         ],
-      },
+      },*/
     }
     ,
     //{

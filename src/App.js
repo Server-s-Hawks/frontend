@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect,useState } from 'react';
 import { Home } from './components/home';
 import {Navbar} from './components/navbar';
 //import { Chat_bot } from './components/chatbot';
@@ -12,17 +12,23 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from  'react-router-d
 function App() {
 
   //const history = useHistory();
-  
+  const[usertype,setUsertype]= useState(null);
+
+  const[uid,setUid]=useState(null);
+  const[name,setName]=useState(null);
+  const[email,setEmail]=useState(null);
+  const[address,setAddress]=useState(null);
 
 //const dispatch = useDispatch();  // A hook that access react dispatch function
 
-/*useEffect(()=>{
-  dispatch(getGets());
-}, [dispatch]);
+function function1(data,uid,name,email,address){
+  setUsertype(data);
+  setUid(uid);
+  setName(name);
+  setEmail(email);
+  setAddress(address);
+}
 
-<div className='navbar'><Navbar/></div>
-*/
-let toHome = true;
 return (
   <Router>
        <div>
@@ -30,8 +36,12 @@ return (
      <div className='App'>
        
         <Switch>
-          <Route exact path='/'> <Home/></Route>
-          <Route path='/profile' ><Profile/></Route>
+          <Route exact path='/'> <Home function2={function1}/></Route>
+          <Route path='/profile' ><Profile typeFromAppjs={usertype} 
+                                           uid={uid}
+                                           name={name} 
+                                           email={email}
+                                           address={address} /></Route>
           
           </Switch>   
            
@@ -39,12 +49,23 @@ return (
            
        
      </div>
+    
   </div>
   </Router>
 
 
 
 );
+/*
+
+let prop={
+  typeFromAppjs:usertype ,
+   uid:uid,
+  name:name ,
+  email:email,
+ address:address,
+}
+*/
 
 
 

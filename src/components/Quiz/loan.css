@@ -1,5 +1,12 @@
+.main{
+    z-index: 130;
+    position: fixed;
+}
+
+
 .loan-popup-main{
-    position: absolute;
+    position: fixed;
+   
     top: 0vh;
     left: 0vw;
     width: 100vw;
@@ -7,12 +14,13 @@
     z-index: 99;
     background-color: black;
     opacity: 0.6;
+
 }
 
 .loan-popup{
 
- position: absolute;
- background-color: rgb(228, 155, 228);
+    position: fixed;
+ background-color: rgb(154, 160, 212);
  top: 200px;
  left: 200px;
  display: flex;
@@ -20,6 +28,7 @@
  border-radius: 20px;
  z-index: 100;
  opacity: 1;
+ font-family: sans-serif;
  
  
 
@@ -34,10 +43,44 @@
 }
 .head-section2{
     margin: 10px 10px 10px 50px;
+    background-color: red;
+    color: white;
+    border: 0;
 }
 .contents{
+    position: relative;
     margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 5px;
+    justify-content: right;
+    width: 200px;
+    height: fit-content;
+    padding: 5px 5px 5px 10px;
+
     
+}
+
+.lable{
+    
+    margin-left: 20px;
+    padding-right: 30px;
+    border-radius: 5px;
+    border: 0px;
+    height: 10px;
+    width: 50px;
+
+}
+.submit{
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(14, 14, 89) ;
+    color: white ;
+    padding: 4px 7px 4px 7px;
+    
+
+}
+
+.submit:hover{
+    background-color: rgb(33, 144, 219) ;
+    color: rgb(0, 0, 0) ;
 }
