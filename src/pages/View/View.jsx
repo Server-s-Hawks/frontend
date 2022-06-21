@@ -22,7 +22,7 @@ return (
 			<td>{val.User_ID}</td>
 			<td>{val.Basic}</td>
 			<td>{val.Allowance}</td>
-      <td>{val.Deduction}</td>
+            <td>{val.Deduction}</td>
 			</tr>
 		)
 		})}
