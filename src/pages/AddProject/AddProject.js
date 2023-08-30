@@ -7,13 +7,28 @@ import { toast } from 'react-toastify';
 const AddProject = () => {
   const [state, setState]=useState([]);
 
-  const { project_company, project_name, start_date, due_date, description, supervisor_ID, manager_ID }= state;
+  const { project_company, project_name, start_date, due_date, description, supervisor_ID }= state;
+
+    // const current = new Date();
+    // const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
+
+    
+     
 
   const handleSubmit= (e) => {
       e.preventDefault();
-      if (!project_company||!project_name||!start_date||!due_date||!description||!supervisor_ID||!manager_ID){
+      if (!project_company||!project_name||!start_date||!due_date||!description||!supervisor_ID){
           toast.error("Please provide value into each input feild");
+          // console.log(date);
       }
+      // else if(start_date > date || start_date > due_date){
+      //   toast.error("date is invalid.Please provide correct date");
+
+      // }
+       else if(start_date > due_date){
+         toast.error("Due date is Invalid.Please provide correct due date");
+
+       }
       else {
       
           axios.post(`http://localhost:5000/api/post`, {
@@ -23,11 +38,9 @@ const AddProject = () => {
             due_date,
             description,
             supervisor_ID,
-            manager_ID,
           })
           .then(()=> {
-              setState({ project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""
-             });
+              //setState({ project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: ""});
 
           })
           .catch((err) => toast.error(err.response.data));
@@ -42,8 +55,14 @@ const AddProject = () => {
   };
 
 
+  
+  
+
+
 
 return (
+
+    
   <div style={{marginTop: "100px"}}>
       <form style={{
           margin: "auto",
@@ -53,6 +72,7 @@ return (
       }}
 
       onSubmit={handleSubmit}
+      
       >
       <label htmlFor="project_company">Project company</label>
       <input
@@ -78,7 +98,7 @@ return (
           id="start_date"
           name="start_date"
           placeholder="start date...."
-          value={(start_date  && start_date.slice(0,10)) || ""}
+          value={(start_date && start_date.slice(0,10)) || ""}
           onChange={handleInputChange}
           />
       <label htmlFor="due_date">Due date</label>
@@ -87,7 +107,7 @@ return (
           id="due_date"
           name="due_date"
           placeholder="due date...."
-          value={(due_date> start_date  && due_date.slice(0,10)) || ""}
+          value={(due_date && due_date.slice(0,10)) || ""}
           onChange={handleInputChange}
           />
       <label htmlFor="description">Description</label>
@@ -109,7 +129,7 @@ return (
           value={supervisor_ID || ""}
           onChange={handleInputChange}
           />
-        <label htmlFor="manager_ID">Manager ID</label>
+        {/* <label htmlFor="manager_ID">Manager ID</label>
         <input
           type="number"
           min="1"
@@ -118,7 +138,7 @@ return (
           placeholder=" "
           value={manager_ID || ""}
           onChange={handleInputChange}
-          />
+          /> */}
 
           <input type="submit" value={"Save"}/>
           <Link to="/">

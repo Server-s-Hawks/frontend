@@ -10,13 +10,12 @@ const initialState = {
   start_date: "",
   due_date: "",
   description: "",
-  supervisor_ID: 0,
-  manager_ID: 0,
+  supervisor_ID: "",
 };
 const UpdateProject = () => {
   const [state, setState]=useState(initialState);
 
-  const { project_company, project_name, start_date, due_date, description, supervisor_ID, manager_ID }= state;
+  const { project_company, project_name, start_date, due_date, description, supervisor_ID }= state;
 
 //   const history = useNavigate();
 
@@ -29,49 +28,29 @@ const UpdateProject = () => {
 
   const handleSubmit= (e) => {
       e.preventDefault();
-    //   if (!project_company||!project_name||!start_date||!due_date||!description||!supervisor_ID||!manager_ID){
-    //       toast.error("Please provide value into each input feild");
+    //   if (!project_name){
+    //     toast.error("Please provide value into each input feild");
 
-    //   }
-      
-    //   else {
-    //   if (!project_ID) {
-    //       axios.post(`http://localhost:5000/api/post`, {
-    //         project_company,
-    //         project_name,
-    //         start_date,
-    //         due_date,
-    //         description,
-    //         supervisor_ID,
-    //         manager_ID,
-    //       })
-    //       .then(()=> {
-    //           setState({ project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""
-    //          });
+    // }else{
 
-    //       })
-    //       .catch((err) => toast.error(err.response.data));
-    //       toast.success("Project Added Successfull");
-
-    //   } 
-      
-
-          axios
-          .put(`http://localhost:5000/api/update/${project_ID}`, {
+        axios.put(`http://localhost:5000/api/update/${project_ID}`, {
             project_company,
             project_name,
             start_date,
             due_date,
             description,
             supervisor_ID,
-            manager_ID,
           })
           .then(()=> {
-              setState({project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: "",manager_ID: ""});
+              setState({project_company: "", project_name: "", start_date: "",due_date: "", description: "", supervisor_ID: ""});
 
-          });
-           
-          toast.success("Project Updated Successfull");
+
+          }).catch((err) => toast.error(err.response.data));
+           toast.success("Project Updated Successfull");
+
+  // }
+        
+      
       
 
           
@@ -103,7 +82,7 @@ return (
           id="project_company"
           name="project_company"
           placeholder="project company...."
-          value={project_company}
+          value={project_company || ""}
           onChange={handleInputChange}
           />
       <label htmlFor="project_name">Project name</label>
@@ -112,7 +91,7 @@ return (
           id="project_name"
           name="project_name"
           placeholder="project name...."
-          value={project_name}
+          value={project_name || ""}
           onChange={handleInputChange}
           />
       <label htmlFor="start_date">Start date</label>
@@ -121,7 +100,7 @@ return (
           id="start_date"
           name="start_date"
           placeholder="start date...."
-          value={(start_date  && start_date.slice(0,10))}
+          value={(start_date  && start_date.slice(0,10)) || ""}     //(start_date  && start_date.slice(0,10))
           onChange={handleInputChange}
           />
       <label htmlFor="due_date">Due date</label>
@@ -130,7 +109,7 @@ return (
           id="due_date"
           name="due_date"
           placeholder="due date...."
-          value={(due_date> start_date  && due_date.slice(0,10)) }
+          value={(due_date> start_date  && due_date.slice(0,10))  || "" }      //(due_date> start_date  && due_date.slice(0,10)) 
           onChange={handleInputChange}
           />
       <label htmlFor="description">Description</label>
@@ -139,7 +118,7 @@ return (
           id="description"
           name="description"
           placeholder="description....."
-          value={description}
+          value={description || ""}
           onChange={handleInputChange}
           />
       <label htmlFor="supervisor_ID">Supervisor ID</label>
@@ -149,26 +128,17 @@ return (
           id="supervisor_ID"
           name="supervisor_ID"
           placeholder=" "
-          value={supervisor_ID}
+          value={supervisor_ID || ""}
           onChange={handleInputChange}
           />
-        <label htmlFor="manager_ID">Manager ID</label>
+        {/* <label htmlFor="manager_ID">Manager ID</label>
         <input
           type="number"
           min="1"
           id="manager_ID"
           name="manager_ID"
           placeholder=" "
-          value={manager_ID}
-          onChange={handleInputChange}
-          />
-          {/* <label htmlFor="manager_ID">Client</label>
-        <input
-          type="text"
-          id="client"
-          name="client"
-          placeholder="client name...."
-          value={client || ""}
+          value={manager_ID || ""}
           onChange={handleInputChange}
           /> */}
 

@@ -12,6 +12,13 @@ import View from './pages/View/View';
 import UpdateProject from './pages/UpdateProject/UpdateProject';
 import SearchProject from './pages/SearchProject/SearchProject';
 import LeaveRequest from './pages/LeaveRequest/LeaveRequest';
+import ViewSupervisor from './pages/ViewSupervisor/ViewSupervisor';
+import Mailer from './Components/Mailer/Mailer';
+import SignIn from './pages/SignIN/SignIN';
+import SignUp from './pages/SignUP/SignUP';
+import ProjectTable from './pages/NewProjects/NewProjects';
+import UserTable from './pages/UserData/UserData';
+//import ViewManager from './pages/ViewManagers/ViewManagers';
 
 function App() {
   return (
@@ -31,6 +38,12 @@ function App() {
               <Route path ='/update/:project_ID' element={<UpdateProject/>} />
               <Route path ='/searchProject' element={<SearchProject/>} />
               <Route path ='/request' element={<LeaveRequest/>} />
+              <Route path ='/getsupervisor' element={<ViewSupervisor/>} />
+              <Route path ='/sendmail' element={<Mailer/>} />
+              <Route path ='/signin' element={<SignIn/>} />
+              <Route path ='/signup' element={<SignUp/>} />
+              <Route path ='/newprojects' element={<ProjectTable/>} />
+              <Route path ='/userdata' element={<UserTable/>} />
 
                
           </Routes>

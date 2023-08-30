@@ -6,7 +6,7 @@ import React, {useState, useEffect} from 'react';
  
  
 const View = () => {
-    const [user, setUser]= useState([]);
+    const [user, setUser]= useState(null);
     
     const {project_ID} = useParams();
 
@@ -15,10 +15,12 @@ const View = () => {
         .then((resp) => setUser({ ...resp.data[0]}));
         
     }, [project_ID]);
+    console.log(user);
     
     return (
+
     <div style={{marginTop: "100px"}}>
-         <div className='card'>
+         {user && <div className='card'>
              <div className='card-header'>
                  <p>Project Details</p>
 
@@ -41,12 +43,12 @@ const View = () => {
                  <br/>
 
                  <strong>Start Date:</strong>
-                 <span>{user.start_date}</span>
+                 <span>{user.start_date.toString().slice(0,10)}</span>
                  <br/>
                  <br/>
 
                  <strong>Due Date:</strong>
-                 <span>{user.due_date}</span>
+                 <span>{user.due_date.toString().slice(0,10)}</span>
                  <br/>
                  <br/>
                  <strong>Description:</strong>
@@ -59,12 +61,9 @@ const View = () => {
                  <br/>
                  <br/>
 
-                 <strong>manager ID:</strong>
-                 <span>{user.manager_ID}</span>
-                 <br/>
-                 <br/>
+                
 
-                 <Link to="/">
+                 <Link to="/project">
                      <div className='btn btn-edit'>Go Back</div>
                  </Link>
                  
@@ -74,7 +73,7 @@ const View = () => {
 
              </div>
 
-         </div>
+         </div>}
           
     </div>
    )
